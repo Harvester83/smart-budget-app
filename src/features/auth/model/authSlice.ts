@@ -5,7 +5,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  token: null,
+ token: null as string | null,
 };
 
 const authSlice = createSlice({
