@@ -19,20 +19,20 @@ export function BalanceCard() {
   const balance = income - expenses;
 
   return (
-    <div className="grid grid-cols-3 gap-4">
-      <div className="p-4 border rounded-xl">
-        <p className="text-sm text-muted-foreground">Balance</p>
-        <p className="text-xl font-semibold">{balance} ₼</p>
+    <div className="grid grid-cols-3 gap-5">
+      <div className="p-6 border rounded-2xl">
+        <p className="text-base text-muted-foreground mb-1">Balance</p>
+        <p className="text-4xl font-bold">{balance} ₼</p>
       </div>
 
-      <div className="p-4 border rounded-xl">
-        <p className="text-sm text-muted-foreground">Income</p>
-        <p className="text-green-600">{income} ₼</p>
+      <div className="p-6 border rounded-2xl">
+        <p className="text-base text-muted-foreground mb-1">Income</p>
+        <p className="text-4xl font-bold text-green-600">{income} ₼</p>
       </div>
 
-      <div className="p-4 border rounded-xl">
-        <p className="text-sm text-muted-foreground">Expenses</p>
-        <p className="text-red-600">{expenses} ₼</p>
+      <div className="p-6 border rounded-2xl">
+        <p className="text-base text-muted-foreground mb-1">Expenses</p>
+        <p className="text-4xl font-bold text-red-600">{expenses} ₼</p>
       </div>
     </div>
   );

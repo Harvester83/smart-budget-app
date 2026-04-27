@@ -33,11 +33,12 @@ export function AddTransaction() {
   };
 
   return (
-    <div className="p-4 border rounded-xl space-y-4">
+    <div className="p-8 border rounded-2xl space-y-5">
 
       {/* type switch */}
-      <div className="flex gap-2">
+      <div className="flex gap-3">
         <Button
+          size="lg"
           variant={type === "expense" ? "default" : "outline"}
           onClick={() => setType("expense")}
         >
@@ -45,6 +46,7 @@ export function AddTransaction() {
         </Button>
 
         <Button
+          size="lg"
           variant={type === "income" ? "default" : "outline"}
           onClick={() => setType("income")}
         >
@@ -67,7 +69,7 @@ export function AddTransaction() {
       />
 
       {/* submit */}
-      <Button className="w-full" onClick={handleSubmit}>
+      <Button size="lg" className="w-full" onClick={handleSubmit}>
         Add {type}
       </Button>
     </div>

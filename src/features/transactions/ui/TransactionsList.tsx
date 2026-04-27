@@ -10,33 +10,33 @@ export function TransactionsList() {
 
   if (transactions.length === 0) {
     return (
-      <div className="p-4 border rounded-xl text-center text-muted-foreground">
+      <div className="p-8 border rounded-2xl text-center text-base text-muted-foreground">
         No transactions yet
       </div>
     );
   }
 
   return (
-    <div className="p-4 border rounded-xl space-y-3">
+    <div className="p-8 border rounded-2xl space-y-4">
       {transactions
         .slice()
         .reverse()
         .map((t) => (
           <div
             key={t.id}
-            className="flex justify-between items-center border-b pb-2 last:border-none"
+            className="flex justify-between items-center border-b pb-4 last:border-none last:pb-0"
           >
             <div>
-              <p className="font-medium">{t.title}</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-lg font-semibold">{t.title}</p>
+              <p className="text-sm text-muted-foreground">
                 {new Date(t.date).toLocaleDateString()}
               </p>
             </div>
 
             <p
-              className={
+              className={`text-2xl font-bold ${
                 t.type === "income" ? "text-green-600" : "text-red-600"
-              }
+              }`}
             >
               {t.type === "income" ? "+" : "-"}
               {t.amount} ₼

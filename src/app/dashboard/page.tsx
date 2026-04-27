@@ -4,10 +4,12 @@ import { TransactionsList } from "@/features/transactions/ui/TransactionsList";
 
 export default function DashboardPage() {
   return (
-    <div className="p-6 space-y-6">
-      <BalanceCard />
-      <AddTransaction />
-      <TransactionsList />
+    <div className="min-h-screen p-8">
+      <div className="max-w-3xl mx-auto space-y-6">
+        <BalanceCard />
+        <AddTransaction />
+        <TransactionsList />
+      </div>
     </div>
   );
 }
