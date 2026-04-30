@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Link as Anchor, Loader2, Wallet } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
+import { login } from "@/features/auth/api/login";
 
 
 export default function LoginPage() {
@@ -21,53 +22,69 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // const handleLogin = async () => {
+  //   setLoading(true);
+
+  //   try {
+  //     const { data } = await axios.post("http://localhost:8080/api/auth/login", {
+  //       email,
+  //       password,
+  //     });
+
+  //     dispatch(setToken(data.token));
+  //     router.push("/dashboard");
+
+  //   } catch (err) {
+  //     const error = err as AxiosError<{ message?: string }>;
+
+  //     if (error.response) {
+  //       const status = error.response.status;
+
+  //       switch (status) {
+  //         case 401:
+  //           toast.error("Invalid email or password");
+  //           break;
+
+  //         case 404:
+  //           toast.error("Invalid email or password");
+  //           break;
+
+  //         case 500:
+  //           toast.error("Server error. Try again later");
+  //           break;
+
+  //         default:
+  //           toast.success(error.response.data?.message || " Something went wrong");
+  //       }
+
+  //     } else if (error.request) {
+  //       toast.error("No response from server");
+  //     } else {
+  //       toast.error("Request error");
+  //     }
+
+  //     console.error(error);
+
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const handleLogin = async () => {
-  setLoading(true);
+    setLoading(true);
 
-  try {
-    const { data } = await axios.post("http://localhost:8080/api/auth/login", {
-      email,
-      password,
-    });
+    try {
+      const data = await login(email, password);
 
-    dispatch(setToken(data.token));
-    router.push("/dashboard");
+      dispatch(setToken(data.token));
+      router.push("/dashboard");
 
-  } catch (err) {
-    const error = err as AxiosError<{ message?: string }>;
-
-    if (error.response) {
-      const status = error.response.status;
-
-      switch (status) {
-        case 401:
-          toast.error("Invalid email or password");
-          break;
-
-        case 404:
-          toast.error("Invalid email or password");
-          break;
-
-        case 500:
-          toast.error("Server error. Try again later");
-          break;
-
-        default:
-          toast.success(error.response.data?.message || " Something went wrong");
-      }
-
-    } else if (error.request) {
-      toast.error("No response from server");
-    } else {
-      toast.error("Request error");
+    } catch (err: any) {
+      toast.error(err.message);
+    } finally {
+      setLoading(false);
     }
-
-    console.error(error);
-
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-10">
