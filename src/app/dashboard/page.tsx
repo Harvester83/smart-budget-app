@@ -3,6 +3,15 @@ import { BalanceCard } from "@/features/transactions/ui/BalanceCard";
 import { TransactionsList } from "@/features/transactions/ui/TransactionsList";
 
 export default function DashboardPage() {
+
+
+
+  
+
+
+
+
+
   return (
     <div className="min-h-screen p-8">
       <div className="max-w-3xl mx-auto space-y-6">
